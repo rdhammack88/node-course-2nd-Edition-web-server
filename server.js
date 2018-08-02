@@ -95,6 +95,7 @@ app.get('/about', (req, res) => {
 
 app.get('/projects', (req, res) => {
     res.render('projects', {
+        pageTitle: 'Projects',
         projects: [
             'Blogger',
             'Bomber Skate Shop',
