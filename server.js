@@ -50,6 +50,17 @@ hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 });
 
+hbs.registerHelper('list', (projects) => {
+    var output = '<ul>';
+
+    projects.forEach((project, i) => {
+        output += `<li> ${projects[i]} </li>`;
+    });
+
+    output += '</ul>';
+    return output;
+});
+
 app.get('/', (req, res) => {
     // res.send('<h1>Hello Express App</h1>');
     res.render('home', {
@@ -79,6 +90,18 @@ app.get('/about', (req, res) => {
     res.render('about', {
         pageTitle: 'About',
         // currentYear: getCurrentYear
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects', {
+        projects: [
+            'Blogger',
+            'Bomber Skate Shop',
+            'Playlist Maker',
+            'Movie Reviewer',
+            'Quizzer'
+        ]
     });
 });
 
